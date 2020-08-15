@@ -1,0 +1,237 @@
+input:focus {
+  outline: none;
+}
+a {
+  cursor: pointer;
+}
+
+#rooms {
+  padding: 75px 0 25px;
+  padding-top: 75px;
+  height: 100vh;
+  display: flex;
+  flex-flow: row;
+}
+
+.background-container {
+  background-image: linear-gradient(to right, #4880ec, #019cad);
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+.vertical-center {
+  margin: 0;
+  position: relative;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+#arrow {
+  border: none;
+  background: none;
+  font: inherit;
+  cursor: pointer;
+  padding: 0%;
+}
+#arrow:focus {
+  outline: none;
+}
+
+#arrow:active {
+  border: none;
+  background: none;
+  font: inherit;
+  cursor: pointer;
+  padding: 0%;
+}
+
+.roomList {
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+  width: 40%;
+  float: left;
+}
+
+.searchBar {
+  width: 100%;
+  background: #ccc;
+  padding: 15px;
+  border-radius: 5px;
+  border-top-right-radius: 0;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: stretch;
+  vertical-align: middle;
+}
+
+.searchInput {
+  flex-grow: 1;
+  padding: 5px 5px;
+  margin: 0 10px;
+  border: none;
+  border-radius: 15px;
+}
+
+.roomSearch {
+  height: 100%;
+  color: #ff7777;
+}
+
+.chatList {
+  width: 100%;
+  height: 70vh;
+  flex-grow: 1;
+  background: #eee;
+  border-radius: 5px;
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
+  border-bottom-right-radius: 0;
+  /* padding: 15px; */
+  display: flex;
+  flex-flow: column;
+  justify-content: start;
+  overflow-y: scroll;
+  float: right;
+}
+.chatList .chatListItem {
+  border: none;
+  cursor: pointer;
+  margin: 0;
+}
+
+.chatList .chatListItem:hover {
+  border: none;
+  cursor: pointer;
+  margin: 0;
+  background-color: #eee;
+}
+
+.chatList .readChat {
+  background-color: rgb(245, 245, 245);
+}
+
+.chatList .readChat .comments .comment .content .author {
+  color: #555;
+  font-weight: normal;
+}
+
+.chatList .readChat .comments .comment .content .text {
+  color: #777;
+}
+
+.chatList .comments .comment .content .text {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.chatContainer {
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+  width: 60%;
+  float: right;
+}
+
+.chatTitle {
+  width: 100%;
+  background: #ddd;
+  padding: 15px;
+  border-radius: 5px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: stretch;
+  vertical-align: middle;
+}
+
+.chatBox {
+  width: 100%;
+  height: 70vh;
+  flex-grow: 1;
+  background: #eee;
+  padding: 15px;
+  /* border-radius: 25px; */
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  display: flex;
+  flex-flow: column;
+  justify-content: start;
+  overflow-y: scroll;
+}
+
+.chatEntry {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+}
+
+.left {
+  align-self: flex-start;
+  align-items: flex-start;
+}
+
+.right {
+  align-self: flex-end;
+  align-items: flex-end;
+}
+
+.chatItem {
+  display: flex;
+  align-items: flex-end;
+  margin: 5px;
+}
+
+.left .chatItem {
+  flex-flow: row-reverse nowrap;
+}
+
+.right .chatItem {
+  flex-flow: row nowrap;
+}
+
+.chatTime {
+  font-size: 0.8em;
+  margin: 0 5px;
+  color: #777;
+}
+
+.chatBubble {
+  padding: 5px 10px;
+  background: #ff7777;
+  border-radius: 25px;
+  color: #fff;
+}
+
+.chatInputContainer {
+  width: 100%;
+  background: #ddd;
+  padding: 15px;
+  border-radius: 5px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-bottom-left-radius: 0;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: stretch;
+}
+
+.chatInput {
+  flex-grow: 1;
+  padding: 5px 10px;
+  margin: 0 10px;
+  border: none;
+  border-radius: 15px;
+}
+
+.chatSend {
+  height: 100%;
+  color: #ff7777;
+}

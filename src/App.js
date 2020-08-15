@@ -11,65 +11,78 @@ import NavBar from './components/NavBar';
 import Home from './pages/Home';
 import PersonalInfo from './pages/PersonalInfo';
 import Dashboard from './pages/Dashboard';
+import Personal from './pages/Personal';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 import { auth, firestore } from './services/firebase';
 import './styles.css';
 
-const PrivateRoute = ({ component: Component, authenticated, infoSetup, ...rest }) => (
+const PrivateRoute = ({
+  component: Component,
+  authenticated,
+  infoSetup,
+  ...rest
+}) => (
   <Route
     {...rest}
     render={(props) => {
       if (authenticated === true) {
         return infoSetup ? (
           <Component {...props} />
-          ) : (
-            <Redirect to="/add-personal-information" />
-          )
-      }
-      else return (
-        <Redirect
-          to={{ pathname: '/login', state: { from: props.location } }}
-        />
-      )
+        ) : (
+          <Redirect to="/add-personal-information" />
+        );
+      } else
+        return (
+          <Redirect
+            to={{ pathname: '/login', state: { from: props.location } }}
+          />
+        );
     }}
   />
 );
 
-const InfoSetupRoute = ({ component: Component, authenticated, infoSetup, ...rest }) => (
+const InfoSetupRoute = ({
+  component: Component,
+  authenticated,
+  infoSetup,
+  ...rest
+}) => (
   <Route
     {...rest}
     render={(props) => {
       if (authenticated === true) {
         return infoSetup ? (
           <Redirect to="/dashboard" />
-          ) : (
-            <Component {...props} />
-          )
-      }
-      else return (
-        <Redirect
-          to={{ pathname: '/login', state: { from: props.location } }}
-        />
-      )
+        ) : (
+          <Component {...props} />
+        );
+      } else
+        return (
+          <Redirect
+            to={{ pathname: '/login', state: { from: props.location } }}
+          />
+        );
     }}
   />
 );
 
-const PublicRoute = ({ component: Component, authenticated, infoSetup, ...rest }) => (
+const PublicRoute = ({
+  component: Component,
+  authenticated,
+  infoSetup,
+  ...rest
+}) => (
   <Route
     {...rest}
     render={(props) => {
       if (authenticated === true) {
         return infoSetup ? (
           <Redirect to="/dashboard" />
-          ) : (
-            <Redirect to="/add-personal-information" />
-          )
-      }
-      else return (
-        <Component {...props} />
-      )
+        ) : (
+          <Redirect to="/add-personal-information" />
+        );
+      } else return <Component {...props} />;
     }}
   />
 );
@@ -85,11 +98,11 @@ class App extends Component {
     auth().onAuthStateChanged((user) => {
       if (user) {
         firestore
-          .collection("users")
+          .collection('users')
           .doc(user.uid)
-          .onSnapshot( snapshot => {
+          .onSnapshot((snapshot) => {
             if (snapshot.data()) {
-              const infoSetup =  snapshot.data().infoSetup;
+              const infoSetup = snapshot.data().infoSetup;
               this.setState({ infoSetup }, () => {
                 this.setState({
                   authenticated: true,
@@ -122,6 +135,12 @@ class App extends Component {
                 authenticated={this.state.authenticated}
                 infoSetup={this.state.infoSetup}
                 component={Dashboard}
+              ></PrivateRoute>
+              <PrivateRoute
+                path="/personal"
+                authenticated={this.state.authenticated}
+                infoSetup={this.state.infoSetup}
+                component={Personal}
               ></PrivateRoute>
               <InfoSetupRoute
                 path="/add-personal-information"
