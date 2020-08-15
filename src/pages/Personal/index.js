@@ -46,7 +46,7 @@ const countryOptions = [
 class Personal extends Component {
   state = {
     chatMessage: '',
-    chatHistory: [],
+    chatHistory: {},
     chatList: [],
     users: {},
     userId: auth().currentUser.uid,
@@ -133,6 +133,59 @@ class Personal extends Component {
     }, () => console.log(this.state.users));
   }
 
+  getChats = async () => {
+    // console.log(this.state.chatList)
+    const { chatHistory } = this.state;
+    // this.state.chatList.forEach(element => {
+      // const temp = []
+    //   firestore
+    //     .collection('chats')
+    //     .doc(element.chatId)
+    //     .collection(element.chatId)
+    //     .onSnapshot(
+    //       (snapshot) => {
+    //         snapshot.docChanges().forEach((change) => {
+    //           if (change.type === 'added') {
+    //             console.log(change.doc.data());
+    //             temp.push(change.doc.data());
+    //             console.log(temp)
+    //           }
+    //         });
+    //         chatHistory[element.chatId] = temp
+    //       },
+    //       (err) => {
+    //         console.log(err.toString());
+    //       }
+    //     );
+      
+    // })
+
+    // console.log(chatHistory)
+    this.state.chatList.forEach(element => {
+      const temp = []
+      firestore
+        .collection('chats')
+        .doc(element.chatId)
+        .collection(element.chatId)
+        .onSnapshot(
+          (snapshot) => {
+            snapshot.docChanges().forEach((change) => {
+              if (change.type === 'added') {
+                console.log(change.doc.data());
+                chatHistory[element.chatId] = []
+                chatHistory[element.chatId].push(change.doc.data())
+              }
+            });
+          },
+          (err) => {
+            console.log(err.toString());
+          }
+        );
+    })
+
+    console.log(chatHistory['yD4zOAweV3PpsVX0VI0Z'])
+  }
+
   getChat = () => {
     const { chatHistory, currChatId } = this.state;
       
@@ -162,35 +215,30 @@ class Personal extends Component {
   };
 
   getPersonal = async () => {
-    const snapshot = await firestore.collection('personal').get()
-    const collection = {};
-    snapshot.forEach(doc => {
-        collection[doc.id] = doc.data();
-    });
+    const personalChat = [];
 
-    
-    const func = async () => {
-      const personalChat = []
-      await firestore
-      .collection('users')
-      .doc(this.state.userId)
-      .onSnapshot(
-        (snapshot) => {
-          if (snapshot.data().personal) {
-            snapshot.data().personal.forEach(id => personalChat.push(collection[id]))
-          }
-        }
-      )
-      return personalChat
-    }
-
-    this.setState({
-      ...this.state,
-      chatList: await func()
-    }, () => {
-      console.log(this.state.chatList)
+    console.log(auth().currentUser.uid);
+    await firestore.collection('personal')
+    .where('userA', '==', auth().currentUser.uid)
+    .get()
+    .then(querySnapshot => {
+      querySnapshot.forEach(function(doc) {
+        personalChat.push(doc.data());
+      });
     })
 
+    await firestore.collection('personal')
+    .where('userB', '==', auth().currentUser.uid)
+    .get()
+    .then(querySnapshot => {
+      querySnapshot.forEach(function(doc) {
+        personalChat.push(doc.data());
+      });
+    })
+      
+    this.setState({
+      chatList: personalChat
+    }, () => this.getChats())
   };
 
   connectStudent = async () => {
@@ -343,7 +391,7 @@ class Personal extends Component {
 
   renderPersonal = () => {
 
-    return this.state.chatList.length > 0 && (
+    return (
       <div className={'chatList'}>
       {this.state.chatList.length > 0 && this.state.chatList.map((chat) => (
         <div className="ui segment chatListItem">
@@ -353,10 +401,11 @@ class Personal extends Component {
                 <img src="https://avatar.oxro.io/avatar.svg?name=John+Doe&background=000000&color=e5c296" />
               </a>
               <div className="content">
-                <a className="author">{this.state.userId == chat.userA ? this.state.users[chat.userA].firstname : this.state.users[chat.userB].firstname} </a>
+                <a className="author">{this.state.userId == chat.userA ? this.state.users[chat.userB].firstname : this.state.users[chat.userA].firstname} </a>
                 <div className="right floated metadata">
                   <div className="date">5 mins ago</div>
                 </div>
+                {this.state.chatHistory[chat.chatId] && 
                 <div
                   className="text"
                   style={{
@@ -365,9 +414,10 @@ class Personal extends Component {
                     whiteSpace: 'nowrap',
                   }}
                   >
-                  Hey guys, I hope this example comment is helping you read this
-                  documentation.
+                    test
+                  {/* {this.state.chatHistory[chat.chatId][0]} */}
                 </div>
+                }
               </div>
             </div>
           </div>
@@ -641,7 +691,7 @@ class Personal extends Component {
                     <div className={'chatTitle'}>
                       <strong>{this.state.chatName}</strong>
                     </div>
-                    {this.renderChat()}
+                    {/* {this.renderChat()} */}
                     <div className={'chatInputContainer'}>
                       <a onClick={() => {}}>
                         <FontAwesomeIcon
