@@ -1,6 +1,6 @@
 .background-container {
   background-image: linear-gradient(to bottom right, #4880ec, #019cad);
-  height: 100vh;
+  height: calc(100vh - 45.7px);
   overflow: hidden;
   position: relative;
 }

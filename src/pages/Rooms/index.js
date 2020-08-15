@@ -3,6 +3,7 @@ import axios from 'axios';
 import _ from 'lodash';
 import { Dropdown } from 'semantic-ui-react';
 import moment from 'moment';
+import { v4 as uuidv4 } from 'uuid';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faPaperPlane,
@@ -50,10 +51,20 @@ class Rooms extends Component {
     country: '',
     university: '',
     searchterm: '',
+    user: {},
+    userRooms: [],
+    rooms: [],
+    currentChatId: '',
+    newRoomName: '',
+    newRoomCountry: '',
+    newRoomDescription: '',
+    newRoomMajor: '',
+    newRoomUniversity: '',
   };
 
   componentDidMount() {
     this.getChat();
+    this.getUserRooms();
   }
 
   componentDidUpdate() {}
@@ -88,6 +99,44 @@ class Rooms extends Component {
       });
   };
 
+  getUserRooms = async () => {
+    const userId = auth().currentUser.uid;
+
+    firestore
+      .collection('users')
+      .doc(userId)
+      .get()
+      .then(doc => {
+        const userRooms =  doc.data().rooms;
+        if (userRooms) {
+          this.setState({ userRooms }, () => {
+            this.getRooms(userId);
+          });
+        } else {
+          this.setState({ rooms: [] });
+        }
+      });
+  }
+
+  getRooms = (userId) => {
+    const { userRooms } = this.state;
+    console.log(userRooms);
+    firestore
+      .collection('rooms')
+      .where('id', 'in', userRooms)
+      .onSnapshot((snapshot) => {
+        snapshot.docChanges().forEach((change) => {
+          const rooms = change.doc.data();
+          if (change.type === 'added') {
+            rooms.push(rooms);
+          }
+        });
+      })
+      .catch((err) => {
+        console.log(err.toString());
+      });
+  }
+
   getChat = () => {
     const { chatHistory } = this.state;
     firestore
@@ -112,16 +161,74 @@ class Rooms extends Component {
       );
   };
 
-  getRooms = async () => {
-    const result = await firestore.collection('users').get();
-  };
-
   searchRooms = async () => {
     //TODO
   };
 
   createRooms = async () => {
-    //TODO
+    const {
+      newRoomName,
+      newRoomCountry,
+      newRoomDescription,
+      newRoomMajor,
+      newRoomUniversity,
+    } = this.setState;
+    
+    
+    console.log(auth().currentUser.uid,);
+    
+    const timestamp = moment().valueOf();
+    const chatId = uuidv4();
+    const roomId = uuidv4();
+    
+    const userId = auth().currentUser.uid;
+    
+    const roomItem = {
+      chatId,
+      name: 'First test',
+      country: 'Canada',
+      description: 'TESTING',
+      major: 'CS',
+      university: 'Waterloo',
+    }
+
+    firestore
+      .collection('chats')
+      .doc(chatId)
+      .collection(chatId)
+      .doc(timestamp.toString())
+      .set({})
+      .then(() => {
+        firestore.collection("rooms")
+        .doc(roomId)
+        .set(roomItem)
+        .then(() => {
+          firestore.collection("users")
+          .doc(userId)
+          .get()
+          .then(doc => {
+            if (doc.data().rooms) {
+              const userRooms =  doc.data().rooms;
+              const newUserRooms = [...userRooms, roomId];
+              firestore.collection("users")
+              .doc(userId)
+              .update({
+                rooms: newUserRooms,
+              })
+            } else {
+              const userRooms = [roomId];
+              firestore.collection("users")
+              .doc(userId)
+              .update({
+                rooms: userRooms,
+              })
+            }
+          });
+        })
+      })
+      .catch((err) => {
+        console.log(err.toString());
+      });
   };
 
   onChatMessageChange = (e) => {

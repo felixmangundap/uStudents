@@ -6,16 +6,15 @@ a {
 }
 
 #rooms {
-  padding: 75px 0 25px;
-  padding-top: 75px;
-  height: 100vh;
+  padding: 25px;
+  height: 100%;
   display: flex;
   flex-flow: row;
 }
 
 .background-container {
-  background-image: linear-gradient(to right, #4880ec, #019cad);
-  height: 100vh;
+  background: linear-gradient(to bottom right, #4880ec, #019cad);
+  height: calc(100vh - 45.7px);
   overflow: hidden;
   position: relative;
 }
