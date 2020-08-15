@@ -58,7 +58,6 @@ class Personal extends Component {
 
   componentDidMount() {
     this.getAllUsers();
-    this.getChat();
     this.getPersonal();
   }
 
@@ -122,20 +121,16 @@ class Personal extends Component {
     this.setState({
       ...this.state,
       users: collection
-    });
+    }, () => console.log(this.state.users));
   }
 
-  getChats = (chats) => {
-    console.log(this.state.chatList[0])
-  }
-
-  getChat = () => {
+  getChat = (id) => {
     const { chatHistory } = this.state;
       
     firestore
       .collection('chats')
-      .doc('7Ps1m0Cc0eO4km8JrG2Q')
-      .collection('7Ps1m0Cc0eO4km8JrG2Q')
+      .doc(id)
+      .collection(id)
       .onSnapshot(
         (snapshot) => {
           snapshot.docChanges().forEach((change) => {
@@ -163,7 +158,7 @@ class Personal extends Component {
 
     const personalChat = []
     
-    await firestore
+    firestore
     .collection('users')
     .doc(this.state.userId)
     .onSnapshot(
@@ -178,7 +173,7 @@ class Personal extends Component {
       ...this.state,
       chatList: personalChat
     }, () => {
-      this.getChats(this.state.chatList)
+      console.log(this.state.chatList)
     })
 
   };
@@ -332,8 +327,9 @@ class Personal extends Component {
 
   renderPersonal = () => {
 
-    return (
+    return this.state.chatList.length > 0 && (
       <div className={'chatList'}>
+      {this.state.chatList.length > 0 && this.state.chatList.map((chat) => (
         <div className="ui segment chatListItem">
           <div className="ui comments">
             <div className="ui comment">
@@ -341,7 +337,7 @@ class Personal extends Component {
                 <img src="https://avatar.oxro.io/avatar.svg?name=John+Doe&background=000000&color=e5c296" />
               </a>
               <div className="content">
-                <a className="author">Stevie Feliciano</a>
+                <a className="author">{this.state.userId == chat.userA ? this.state.users[chat.userA].firstname : this.state.users[chat.userB].firstname} </a>
                 <div className="right floated metadata">
                   <div className="date">5 mins ago</div>
                 </div>
@@ -352,7 +348,7 @@ class Personal extends Component {
                     overflow: 'hidden',
                     whiteSpace: 'nowrap',
                   }}
-                >
+                  >
                   Hey guys, I hope this example comment is helping you read this
                   documentation.
                 </div>
@@ -360,6 +356,7 @@ class Personal extends Component {
             </div>
           </div>
         </div>
+      ))}
         <div className="ui segment chatListItem readChat">
           <div className="ui comments">
             <div className="ui comment">
