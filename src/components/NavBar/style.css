@@ -1,0 +1,11 @@
+#menubar {
+  background: transparent;
+}
+
+.no-border {
+  border: none !important;
+}
+
+.no-border::before {
+  display: none !important;
+}

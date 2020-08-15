@@ -1,6 +1,8 @@
 import React, { Fragment, Component } from 'react';
 import { Link } from 'react-router-dom';
 
+import './style.css'
+
 const guestLinks = (
   <div className="right menu ">
     <Link to="/login" className="item">
@@ -14,10 +16,10 @@ const guestLinks = (
 
 const authLinks = (
   <div className="right menu ">
-    <Link to="/" className="item">
+    <Link to="/personal" className="item no-border">
       Personal
     </Link>
-    <Link to="/" className="item">
+    <Link to="/rooms" className="item no-border">
       Rooms
     </Link>
   </div>
@@ -27,16 +29,14 @@ class NavBar extends Component {
   render() {
     return (
       <Fragment>
-        <div className="ui inverted fixed big menu">
+        <div id='menubar' className="ui inverted fixed big menu">
           <div className="ui container">
-            <Link to="/" className="item">
+            <Link to="/" className="item no-border">
               uStudents
             </Link>
             {this.props.authenticated === true ? authLinks : guestLinks}
           </div>
         </div>
-        <div className="ui hidden divider"></div>
-        <div className="ui hidden divider"></div>
       </Fragment>
     );
   }
