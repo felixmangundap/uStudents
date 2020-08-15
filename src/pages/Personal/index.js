@@ -54,6 +54,9 @@ class Personal extends Component {
     major: '',
     country: '',
     university: '',
+    currPersonalId: '',
+    currChatId : '',
+    chatName: 'Chat',
   };
 
   componentDidMount() {
@@ -84,33 +87,39 @@ class Personal extends Component {
   };
 
   sendChat = async (e) => {
-    const { chatMessage: message, userId } = this.state;
+    const { chatMessage: message, userId, currChatId } = this.state;
 
     const timestamp = moment().valueOf();
 
     if (message.trim() === '') return;
 
+    let senderName = '';
+    await firestore.collection('users').doc(userId).get().then(doc => senderName = `${doc.data().firstname} ${doc.data().lastname}`)
+
     const chatItem = {
       message,
       senderId: userId,
-      senderName: 'First Last',
+      senderName,
       timestamp,
     };
 
-    firestore
-      .collection('chats')
-      .doc('7Ps1m0Cc0eO4km8JrG2Q')
-      .collection('7Ps1m0Cc0eO4km8JrG2Q')
-      .doc(timestamp.toString())
-      .set(chatItem)
-      .then(() => {
-        this.setState({
-          chatMessage: '',
+    if (currChatId) {
+      firestore
+        .collection('chats')
+        .doc(currChatId)
+        .collection(currChatId)
+        .doc(timestamp.toString())
+        .set(chatItem)
+        .then(() => {
+          this.setState({
+            chatMessage: '',
+          });
+        })
+        .catch((err) => {
+          console.log("TEST = " +err.toString());
         });
-      })
-      .catch((err) => {
-        console.log("TEST = " +err.toString());
-      });
+    }
+
   };
 
   getAllUsers = async () => {
@@ -140,28 +149,31 @@ class Personal extends Component {
   }
 
   getChat = () => {
-    const { chatHistory } = this.state;
+    const { chatHistory, currChatId } = this.state;
       
-    firestore
-      .collection('chats')
-      .doc('7Ps1m0Cc0eO4km8JrG2Q')
-      .collection('7Ps1m0Cc0eO4km8JrG2Q')
-      .onSnapshot(
-        (snapshot) => {
-          snapshot.docChanges().forEach((change) => {
-            if (change.type === 'added') {
-              console.log(change.doc.data());
-              chatHistory.push(change.doc.data());
-            }
-          });
-          this.setState({
-            isLoading: false,
-          });
-        },
-        (err) => {
-          console.log(err.toString());
-        }
-      );
+    if (currChatId) {
+      console.log('YES')
+      firestore
+        .collection('chats')
+        .doc(currChatId)
+        .collection(currChatId)
+        .onSnapshot(
+          (snapshot) => {
+            snapshot.docChanges().forEach((change) => {
+              if (change.type === 'added') {
+                console.log(change.doc.data());
+                chatHistory.push(change.doc.data());
+              }
+            });
+            this.setState({
+              isLoading: false,
+            });
+          },
+          (err) => {
+            console.log(err.toString());
+          }
+        );
+    }
   };
 
   getPersonal = async () => {
@@ -212,7 +224,6 @@ class Personal extends Component {
       });
 
       if (mentorList.length > 0) {
-        console.log('here');
         const orderedUser = mentorList.sort(function(a, b) {
           if (a.personal && b.personal) return a.personal.length - b.personal.length;
           return 1;
@@ -243,6 +254,8 @@ class Personal extends Component {
           .doc(personalId)
           .set(personalItem)
           .then(() => {
+            this.setState({ currPersonalId: personalId }, () => this.updateChatName());
+            this.setState({ currChatId: chatId });
             firestore.collection("users")
             .doc(chatUsers[0])
             .get()
@@ -390,6 +403,27 @@ class Personal extends Component {
       </div>
     );
   };
+
+  updateChatName = () => {
+    const { currPersonalId } = this.state;
+
+    console.log(currPersonalId);
+
+    if (!currPersonalId) return;
+
+    firestore.collection('personal')
+    .doc(currPersonalId)
+    .get()
+    .then(doc => {
+      firestore.collection("users")
+      .doc(doc.data().userB)
+      .get()
+      .then(doc => {
+        console.log(doc.data());
+        this.setState({ chatName: `${doc.data().firstname} ${doc.data().lastname}` });
+      })
+    })
+  }
 
   renderSearchBox = () => {
     return (
@@ -613,7 +647,7 @@ class Personal extends Component {
                   </div>
                   <div className={'chatContainer'}>
                     <div className={'chatTitle'}>
-                      <strong>John Doe</strong>
+                      <strong>{this.state.chatName}</strong>
                     </div>
                     {this.renderChat()}
                     <div className={'chatInputContainer'}>
