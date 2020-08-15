@@ -79,7 +79,7 @@ a {
 
 .roomSearch {
   height: 100%;
-  color: #ff7777;
+  color: #4880ec;
 }
 
 .chatList {
@@ -205,7 +205,7 @@ a {
 
 .chatBubble {
   padding: 5px 10px;
-  background: #ff7777;
+  background: #4880ec;
   border-radius: 25px;
   color: #fff;
 }
@@ -233,5 +233,5 @@ a {
 
 .chatSend {
   height: 100%;
-  color: #ff7777;
+  color: #4880ec;
 }
