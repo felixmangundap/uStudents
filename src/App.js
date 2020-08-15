@@ -11,6 +11,7 @@ import NavBar from './components/NavBar';
 import Home from './pages/Home';
 import PersonalInfo from './pages/PersonalInfo';
 import Dashboard from './pages/Dashboard';
+import Rooms from './pages/Rooms';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 import { auth, firestore } from './services/firebase';
@@ -122,6 +123,12 @@ class App extends Component {
                 authenticated={this.state.authenticated}
                 infoSetup={this.state.infoSetup}
                 component={Dashboard}
+              ></PrivateRoute>
+              <PrivateRoute
+                path="/rooms"
+                authenticated={this.state.authenticated}
+                infoSetup={this.state.infoSetup}
+                component={Rooms}
               ></PrivateRoute>
               <InfoSetupRoute
                 path="/add-personal-information"
