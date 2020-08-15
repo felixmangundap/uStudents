@@ -1,0 +1,872 @@
+[
+  {
+     "key":1100,
+     "text":"General Agriculture",
+     "value":"General Agriculture"
+  },
+  {
+     "key":1101,
+     "text":"Agriculture Production And Management",
+     "value":"Agriculture Production And Management"
+  },
+  {
+     "key":1102,
+     "text":"Agricultural Economics",
+     "value":"Agricultural Economics"
+  },
+  {
+     "key":1103,
+     "text":"Animal Sciences",
+     "value":"Animal Sciences"
+  },
+  {
+     "key":1104,
+     "text":"Food Science",
+     "value":"Food Science"
+  },
+  {
+     "key":1105,
+     "text":"Plant Science And Agronomy",
+     "value":"Plant Science And Agronomy"
+  },
+  {
+     "key":1106,
+     "text":"Soil Science",
+     "value":"Soil Science"
+  },
+  {
+     "key":1199,
+     "text":"Miscellaneous Agriculture",
+     "value":"Miscellaneous Agriculture"
+  },
+  {
+     "key":1302,
+     "text":"Forestry",
+     "value":"Forestry"
+  },
+  {
+     "key":1303,
+     "text":"Natural Resources Management",
+     "value":"Natural Resources Management"
+  },
+  {
+     "key":6000,
+     "text":"Fine Arts",
+     "value":"Fine Arts"
+  },
+  {
+     "key":6001,
+     "text":"Drama And Theater Arts",
+     "value":"Drama And Theater Arts"
+  },
+  {
+     "key":6002,
+     "text":"Music",
+     "value":"Music"
+  },
+  {
+     "key":6003,
+     "text":"Visual And Performing Arts",
+     "value":"Visual And Performing Arts"
+  },
+  {
+     "key":6004,
+     "text":"Commercial Art And Graphic Design",
+     "value":"Commercial Art And Graphic Design"
+  },
+  {
+     "key":6005,
+     "text":"Film Video And Photographic Arts",
+     "value":"Film Video And Photographic Arts"
+  },
+  {
+     "key":6007,
+     "text":"Studio Arts",
+     "value":"Studio Arts"
+  },
+  {
+     "key":6099,
+     "text":"Miscellaneous Fine Arts",
+     "value":"Miscellaneous Fine Arts"
+  },
+  {
+     "key":1301,
+     "text":"Environmental Science",
+     "value":"Environmental Science"
+  },
+  {
+     "key":3600,
+     "text":"Biology",
+     "value":"Biology"
+  },
+  {
+     "key":3601,
+     "text":"Biochemical Sciences",
+     "value":"Biochemical Sciences"
+  },
+  {
+     "key":3602,
+     "text":"Botany",
+     "value":"Botany"
+  },
+  {
+     "key":3603,
+     "text":"Molecular Biology",
+     "value":"Molecular Biology"
+  },
+  {
+     "key":3604,
+     "text":"Ecology",
+     "value":"Ecology"
+  },
+  {
+     "key":3605,
+     "text":"Genetics",
+     "value":"Genetics"
+  },
+  {
+     "key":3606,
+     "text":"Microbiology",
+     "value":"Microbiology"
+  },
+  {
+     "key":3607,
+     "text":"Pharmacology",
+     "value":"Pharmacology"
+  },
+  {
+     "key":3608,
+     "text":"Physiology",
+     "value":"Physiology"
+  },
+  {
+     "key":3609,
+     "text":"Zoology",
+     "value":"Zoology"
+  },
+  {
+     "key":3611,
+     "text":"Neuroscience",
+     "value":"Neuroscience"
+  },
+  {
+     "key":3699,
+     "text":"Miscellaneous Biology",
+     "value":"Miscellaneous Biology"
+  },
+  {
+     "key":4006,
+     "text":"Cognitive Science And Biopsychology",
+     "value":"Cognitive Science And Biopsychology"
+  },
+  {
+     "key":6200,
+     "text":"General Business",
+     "value":"General Business"
+  },
+  {
+     "key":6201,
+     "text":"Accounting",
+     "value":"Accounting"
+  },
+  {
+     "key":6202,
+     "text":"Actuarial Science",
+     "value":"Actuarial Science"
+  },
+  {
+     "key":6203,
+     "text":"Business Management And Administration",
+     "value":"Business Management And Administration"
+  },
+  {
+     "key":6204,
+     "text":"Operations Logistics And E Commerce",
+     "value":"Operations Logistics And E Commerce"
+  },
+  {
+     "key":6205,
+     "text":"Business Economics",
+     "value":"Business Economics"
+  },
+  {
+     "key":6206,
+     "text":"Marketing And Marketing Research",
+     "value":"Marketing And Marketing Research"
+  },
+  {
+     "key":6207,
+     "text":"Finance",
+     "value":"Finance"
+  },
+  {
+     "key":6209,
+     "text":"Human Resources And Personnel Management",
+     "value":"Human Resources And Personnel Management"
+  },
+  {
+     "key":6210,
+     "text":"International Business",
+     "value":"International Business"
+  },
+  {
+     "key":6211,
+     "text":"Hospitality Management",
+     "value":"Hospitality Management"
+  },
+  {
+     "key":6212,
+     "text":"Management Information Systems And Statistics",
+     "value":"Management Information Systems And Statistics"
+  },
+  {
+     "key":6299,
+     "text":"Miscellaneous Business Medical Administration",
+     "value":"Miscellaneous Business Medical Administration"
+  },
+  {
+     "key":1901,
+     "text":"Communications",
+     "value":"Communications"
+  },
+  {
+     "key":1902,
+     "text":"Journalism",
+     "value":"Journalism"
+  },
+  {
+     "key":1903,
+     "text":"Mass Media",
+     "value":"Mass Media"
+  },
+  {
+     "key":1904,
+     "text":"Advertising And Public Relations",
+     "value":"Advertising And Public Relations"
+  },
+  {
+     "key":2001,
+     "text":"Communication Technologies",
+     "value":"Communication Technologies"
+  },
+  {
+     "key":2100,
+     "text":"Computer And Information Systems",
+     "value":"Computer And Information Systems"
+  },
+  {
+     "key":2101,
+     "text":"Computer Programming And Data Processing",
+     "value":"Computer Programming And Data Processing"
+  },
+  {
+     "key":2102,
+     "text":"Computer Science",
+     "value":"Computer Science"
+  },
+  {
+     "key":2105,
+     "text":"Information Sciences",
+     "value":"Information Sciences"
+  },
+  {
+     "key":2106,
+     "text":"Computer Administration Management And Security",
+     "value":"Computer Administration Management And Security"
+  },
+  {
+     "key":2107,
+     "text":"Computer Networking And Telecommunications",
+     "value":"Computer Networking And Telecommunications"
+  },
+  {
+     "key":3700,
+     "text":"Mathematics",
+     "value":"Mathematics"
+  },
+  {
+     "key":3701,
+     "text":"Applied Mathematics",
+     "value":"Applied Mathematics"
+  },
+  {
+     "key":3702,
+     "text":"Statistics And Decision Science",
+     "value":"Statistics And Decision Science"
+  },
+  {
+     "key":4005,
+     "text":"Mathematics And Computer Science",
+     "value":"Mathematics And Computer Science"
+  },
+  {
+     "key":2300,
+     "text":"General Education",
+     "value":"General Education"
+  },
+  {
+     "key":2301,
+     "text":"Educational Administration And Supervision",
+     "value":"Educational Administration And Supervision"
+  },
+  {
+     "key":2303,
+     "text":"School Student Counseling",
+     "value":"School Student Counseling"
+  },
+  {
+     "key":2304,
+     "text":"Elementary Education",
+     "value":"Elementary Education"
+  },
+  {
+     "key":2305,
+     "text":"Mathematics Teacher Education",
+     "value":"Mathematics Teacher Education"
+  },
+  {
+     "key":2306,
+     "text":"Physical And Health Education Teaching",
+     "value":"Physical And Health Education Teaching"
+  },
+  {
+     "key":2307,
+     "text":"Early Childhood Education",
+     "value":"Early Childhood Education"
+  },
+  {
+     "key":2308,
+     "text":"Science And Computer Teacher Education",
+     "value":"Science And Computer Teacher Education"
+  },
+  {
+     "key":2309,
+     "text":"Secondary Teacher Education",
+     "value":"Secondary Teacher Education"
+  },
+  {
+     "key":2310,
+     "text":"Special Needs Education",
+     "value":"Special Needs Education"
+  },
+  {
+     "key":2311,
+     "text":"Social Science Or History Teacher Education",
+     "value":"Social Science Or History Teacher Education"
+  },
+  {
+     "key":2312,
+     "text":"Teacher Education Multiple Levels",
+     "value":"Teacher Education Multiple Levels"
+  },
+  {
+     "key":2313,
+     "text":"Language And Drama Education",
+     "value":"Language And Drama Education"
+  },
+  {
+     "key":2314,
+     "text":"Art And Music Education",
+     "value":"Art And Music Education"
+  },
+  {
+     "key":2399,
+     "text":"Miscellaneous Education",
+     "value":"Miscellaneous Education"
+  },
+  {
+     "key":3501,
+     "text":"Library Science",
+     "value":"Library Science"
+  },
+  {
+     "key":1401,
+     "text":"Architecture",
+     "value":"Architecture"
+  },
+  {
+     "key":2400,
+     "text":"General Engineering",
+     "value":"General Engineering"
+  },
+  {
+     "key":2401,
+     "text":"Aerospace Engineering",
+     "value":"Aerospace Engineering"
+  },
+  {
+     "key":2402,
+     "text":"Biological Engineering",
+     "value":"Biological Engineering"
+  },
+  {
+     "key":2403,
+     "text":"Architectural Engineering",
+     "value":"Architectural Engineering"
+  },
+  {
+     "key":2404,
+     "text":"Biomedical Engineering",
+     "value":"Biomedical Engineering"
+  },
+  {
+     "key":2405,
+     "text":"Chemical Engineering",
+     "value":"Chemical Engineering"
+  },
+  {
+     "key":2406,
+     "text":"Civil Engineering",
+     "value":"Civil Engineering"
+  },
+  {
+     "key":2407,
+     "text":"Computer Engineering",
+     "value":"Computer Engineering"
+  },
+  {
+     "key":2408,
+     "text":"Electrical Engineering",
+     "value":"Electrical Engineering"
+  },
+  {
+     "key":2409,
+     "text":"Engineering Mechanics Physics And Science",
+     "value":"Engineering Mechanics Physics And Science"
+  },
+  {
+     "key":2410,
+     "text":"Environmental Engineering",
+     "value":"Environmental Engineering"
+  },
+  {
+     "key":2411,
+     "text":"Geological And Geophysical Engineering",
+     "value":"Geological And Geophysical Engineering"
+  },
+  {
+     "key":2412,
+     "text":"Industrial And Manufacturing Engineering",
+     "value":"Industrial And Manufacturing Engineering"
+  },
+  {
+     "key":2413,
+     "text":"Materials Engineering And Materials Science",
+     "value":"Materials Engineering And Materials Science"
+  },
+  {
+     "key":2414,
+     "text":"Mechanical Engineering",
+     "value":"Mechanical Engineering"
+  },
+  {
+     "key":2415,
+     "text":"Metallurgical Engineering",
+     "value":"Metallurgical Engineering"
+  },
+  {
+     "key":2416,
+     "text":"Mining And Mineral Engineering",
+     "value":"Mining And Mineral Engineering"
+  },
+  {
+     "key":2417,
+     "text":"Naval Architecture And Marine Engineering",
+     "value":"Naval Architecture And Marine Engineering"
+  },
+  {
+     "key":2418,
+     "text":"Nuclear Engineering",
+     "value":"Nuclear Engineering"
+  },
+  {
+     "key":2419,
+     "text":"Petroleum Engineering",
+     "value":"Petroleum Engineering"
+  },
+  {
+     "key":2499,
+     "text":"Miscellaneous Engineering",
+     "value":"Miscellaneous Engineering"
+  },
+  {
+     "key":2500,
+     "text":"Engineering Technologies",
+     "value":"Engineering Technologies"
+  },
+  {
+     "key":2501,
+     "text":"Engineering And Industrial Management",
+     "value":"Engineering And Industrial Management"
+  },
+  {
+     "key":2502,
+     "text":"Electrical Engineering Technology",
+     "value":"Electrical Engineering Technology"
+  },
+  {
+     "key":2503,
+     "text":"Industrial Production Technologies",
+     "value":"Industrial Production Technologies"
+  },
+  {
+     "key":2504,
+     "text":"Mechanical Engineering Related Technologies",
+     "value":"Mechanical Engineering Related Technologies"
+  },
+  {
+     "key":2599,
+     "text":"Miscellaneous Engineering Technologies",
+     "value":"Miscellaneous Engineering Technologies"
+  },
+  {
+     "key":5008,
+     "text":"Materials Science",
+     "value":"Materials Science"
+  },
+  {
+     "key":4002,
+     "text":"Nutrition Sciences",
+     "value":"Nutrition Sciences"
+  },
+  {
+     "key":6100,
+     "text":"General Medical And Health Services",
+     "value":"General Medical And Health Services"
+  },
+  {
+     "key":6102,
+     "text":"Communication Disorders Sciences And Services",
+     "value":"Communication Disorders Sciences And Services"
+  },
+  {
+     "key":6103,
+     "text":"Health And Medical Administrative Services",
+     "value":"Health And Medical Administrative Services"
+  },
+  {
+     "key":6104,
+     "text":"Medical Assisting Services",
+     "value":"Medical Assisting Services"
+  },
+  {
+     "key":6105,
+     "text":"Medical Technologies Technicians",
+     "value":"Medical Technologies Technicians"
+  },
+  {
+     "key":6106,
+     "text":"Health And Medical Preparatory Programs",
+     "value":"Health And Medical Preparatory Programs"
+  },
+  {
+     "key":6107,
+     "text":"Nursing",
+     "value":"Nursing"
+  },
+  {
+     "key":6108,
+     "text":"Pharmacy Pharmaceutical Sciences And Administration",
+     "value":"Pharmacy Pharmaceutical Sciences And Administration"
+  },
+  {
+     "key":6109,
+     "text":"Treatment Therapy Professions",
+     "value":"Treatment Therapy Professions"
+  },
+  {
+     "key":6110,
+     "text":"Community And Public Health",
+     "value":"Community And Public Health"
+  },
+  {
+     "key":6199,
+     "text":"Miscellaneous Health Medical Professions",
+     "value":"Miscellaneous Health Medical Professions"
+  },
+  {
+     "key":1501,
+     "text":"Area Ethnic And Civilization Studies",
+     "value":"Area Ethnic And Civilization Studies"
+  },
+  {
+     "key":2601,
+     "text":"Linguistics And Comparative Language And Literature",
+     "value":"Linguistics And Comparative Language And Literature"
+  },
+  {
+     "key":2602,
+     "text":"French German Latin And Other Common Foreign Language Studies",
+     "value":"French German Latin And Other Common Foreign Language Studies"
+  },
+  {
+     "key":2603,
+     "text":"Other Foreign Languages",
+     "value":"Other Foreign Languages"
+  },
+  {
+     "key":3301,
+     "text":"English Language And Literature",
+     "value":"English Language And Literature"
+  },
+  {
+     "key":3302,
+     "text":"Composition And Rhetoric",
+     "value":"Composition And Rhetoric"
+  },
+  {
+     "key":3401,
+     "text":"Liberal Arts",
+     "value":"Liberal Arts"
+  },
+  {
+     "key":3402,
+     "text":"Humanities",
+     "value":"Humanities"
+  },
+  {
+     "key":4001,
+     "text":"Intercultural And International Studies",
+     "value":"Intercultural And International Studies"
+  },
+  {
+     "key":4801,
+     "text":"Philosophy And Religious Studies",
+     "value":"Philosophy And Religious Studies"
+  },
+  {
+     "key":4901,
+     "text":"Theology And Religious Vocations",
+     "value":"Theology And Religious Vocations"
+  },
+  {
+     "key":5502,
+     "text":"Anthropology And Archeology",
+     "value":"Anthropology And Archeology"
+  },
+  {
+     "key":6006,
+     "text":"Art History And Criticism",
+     "value":"Art History And Criticism"
+  },
+  {
+     "key":6402,
+     "text":"History",
+     "value":"History"
+  },
+  {
+     "key":6403,
+     "text":"United States History",
+     "value":"United States History"
+  },
+  {
+     "key":2201,
+     "text":"Cosmetology Services And Culinary Arts",
+     "value":"Cosmetology Services And Culinary Arts"
+  },
+  {
+     "key":2901,
+     "text":"Family And Consumer Sciences",
+     "value":"Family And Consumer Sciences"
+  },
+  {
+     "key":3801,
+     "text":"Military Technologies",
+     "value":"Military Technologies"
+  },
+  {
+     "key":4101,
+     "text":"Physical Fitness Parks Recreation And Leisure",
+     "value":"Physical Fitness Parks Recreation And Leisure"
+  },
+  {
+     "key":5601,
+     "text":"Construction Services",
+     "value":"Construction Services"
+  },
+  {
+     "key":5701,
+     "text":"Electrical Mechanical And Precision Technologies And Production",
+     "value":"Electrical Mechanical And Precision Technologies And Production"
+  },
+  {
+     "key":5901,
+     "text":"Transportation Sciences And Technologies",
+     "value":"Transportation Sciences And Technologies"
+  },
+  {
+     "key":4000,
+     "text":"Multi Interdisciplinary Studies",
+     "value":"Multi Interdisciplinary Studies"
+  },
+  {
+     "key":3201,
+     "text":"Court Reporting",
+     "value":"Court Reporting"
+  },
+  {
+     "key":3202,
+     "text":"Pre Law And Legal Studies",
+     "value":"Pre Law And Legal Studies"
+  },
+  {
+     "key":5301,
+     "text":"Criminal Justice And Fire Protection",
+     "value":"Criminal Justice And Fire Protection"
+  },
+  {
+     "key":5401,
+     "text":"Public Administration",
+     "value":"Public Administration"
+  },
+  {
+     "key":5402,
+     "text":"Public Policy",
+     "value":"Public Policy"
+  },
+  {
+     "key":"bbbb",
+     "text":"N A Less Than Bachelors Degree",
+     "value":"N A Less Than Bachelors Degree"
+  },
+  {
+     "key":5000,
+     "text":"Physical Sciences",
+     "value":"Physical Sciences"
+  },
+  {
+     "key":5001,
+     "text":"Astronomy And Astrophysics",
+     "value":"Astronomy And Astrophysics"
+  },
+  {
+     "key":5002,
+     "text":"Atmospheric Sciences And Meteorology",
+     "value":"Atmospheric Sciences And Meteorology"
+  },
+  {
+     "key":5003,
+     "text":"Chemistry",
+     "value":"Chemistry"
+  },
+  {
+     "key":5004,
+     "text":"Geology And Earth Science",
+     "value":"Geology And Earth Science"
+  },
+  {
+     "key":5005,
+     "text":"Geosciences",
+     "value":"Geosciences"
+  },
+  {
+     "key":5006,
+     "text":"Oceanography",
+     "value":"Oceanography"
+  },
+  {
+     "key":5007,
+     "text":"Physics",
+     "value":"Physics"
+  },
+  {
+     "key":5098,
+     "text":"Multi Disciplinary Or General Science",
+     "value":"Multi Disciplinary Or General Science"
+  },
+  {
+     "key":5102,
+     "text":"Nuclear Industrial Radiology And Biological Technologies",
+     "value":"Nuclear Industrial Radiology And Biological Technologies"
+  },
+  {
+     "key":5200,
+     "text":"Psychology",
+     "value":"Psychology"
+  },
+  {
+     "key":5201,
+     "text":"Educational Psychology",
+     "value":"Educational Psychology"
+  },
+  {
+     "key":5202,
+     "text":"Clinical Psychology",
+     "value":"Clinical Psychology"
+  },
+  {
+     "key":5203,
+     "text":"Counseling Psychology",
+     "value":"Counseling Psychology"
+  },
+  {
+     "key":5205,
+     "text":"Industrial And Organizational Psychology",
+     "value":"Industrial And Organizational Psychology"
+  },
+  {
+     "key":5206,
+     "text":"Social Psychology",
+     "value":"Social Psychology"
+  },
+  {
+     "key":5299,
+     "text":"Miscellaneous Psychology",
+     "value":"Miscellaneous Psychology"
+  },
+  {
+     "key":5403,
+     "text":"Human Services And Community Organization",
+     "value":"Human Services And Community Organization"
+  },
+  {
+     "key":5404,
+     "text":"Social Work",
+     "value":"Social Work"
+  },
+  {
+     "key":4007,
+     "text":"Interdisciplinary Social Sciences",
+     "value":"Interdisciplinary Social Sciences"
+  },
+  {
+     "key":5500,
+     "text":"General Social Sciences",
+     "value":"General Social Sciences"
+  },
+  {
+     "key":5501,
+     "text":"Economics",
+     "value":"Economics"
+  },
+  {
+     "key":5503,
+     "text":"Criminology",
+     "value":"Criminology"
+  },
+  {
+     "key":5504,
+     "text":"Geography",
+     "value":"Geography"
+  },
+  {
+     "key":5505,
+     "text":"International Relations",
+     "value":"International Relations"
+  },
+  {
+     "key":5506,
+     "text":"Political Science And Government",
+     "value":"Political Science And Government"
+  },
+  {
+     "key":5507,
+     "text":"Sociology",
+     "value":"Sociology"
+  },
+  {
+     "key":5599,
+     "text":"Miscellaneous Social Sciences",
+     "value":"Miscellaneous Social Sciences"
+  }
+]
