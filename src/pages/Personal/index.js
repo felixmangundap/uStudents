@@ -316,6 +316,91 @@ class Personal extends Component {
     );
   };
 
+  renderActivity = () => {
+    return (
+      <div className="ui segment" style={{ height: '95%' }}>
+        <h2>Your Activity</h2>
+        <div className="ui cards">
+          <div className="card">
+            <div className="content">
+              <img
+                className="left floated mini ui rounded image"
+                src="https://avatar.oxro.io/avatar.svg?name=Elliot+Fu&background=000000&color=e5c296"
+              />
+              <div className="header">Elliot Fu</div>
+              <div className="meta">5 minutes ago</div>
+              <div className="description">
+                Elliot Fu is now connected with you
+              </div>
+            </div>
+          </div>
+          <div className="card">
+            <div className="content">
+              <img
+                className="left floated mini ui rounded image"
+                src="https://avatar.oxro.io/avatar.svg?name=Elliot+Fu&background=000000&color=e5c296"
+              />
+              <div className="header">Elliot Fu</div>
+              <div className="meta">5 minutes ago</div>
+              <div className="description">
+                Elliot Fu is now connected with you
+              </div>
+            </div>
+          </div>
+          <div className="card">
+            <div className="content">
+              <img
+                className="left floated mini ui rounded image"
+                src="https://avatar.oxro.io/avatar.svg?name=Elliot+Fu&background=000000&color=e5c296"
+              />
+              <div className="header">Elliot Fu</div>
+              <div className="meta">5 minutes ago</div>
+              <div className="description">
+                Elliot Fu is now connected with you
+              </div>
+            </div>
+          </div>
+          <div className="card">
+            <div className="content">
+              <img
+                className="left floated mini ui rounded image"
+                src="https://avatar.oxro.io/avatar.svg?name=Elliot+Fu&background=000000&color=e5c296"
+              />
+              <div className="header">Elliot Fu</div>
+              <div className="meta">5 minutes ago</div>
+              <div className="description">
+                Elliot Fu is now connected with you
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
+  renderStatistics = () => {
+    return (
+      <div
+        className="ui stretched segment"
+        style={{ bottom: '0', height: '15vh', position: 'absolute' }}
+      >
+        <div className="ui two column grid">
+          <div className="column ">
+            <div className="ui tiny statistic vertical-center">
+              <div className="value">This Month</div>
+            </div>
+          </div>
+          <div className="column">
+            <div className="ui statistic vertical-center">
+              <div className="value">16</div>
+              <div className="label">Connections</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
   render() {
     const { chatMessage } = this.state;
 
@@ -325,8 +410,13 @@ class Personal extends Component {
           <div className="ui grid">
             <div className="ui row">
               <div className="ui six wide stretched column">
+                {/* Student Personal */}
                 <div className="ui row">{this.renderSearchBox()}</div>
                 <div className="ui row">{this.renderRecommendations()}</div>
+
+                {/* Mentor Personal */}
+                {/* <div className="ui row">{this.renderActivity()}</div>
+                <div className="ui row">{this.renderStatistics()}</div> */}
               </div>
               <div className="ui ten wide stretched column">
                 <div className={'conversationContainer'}>
