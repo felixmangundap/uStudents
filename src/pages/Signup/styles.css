@@ -1,5 +1,5 @@
 .background-container {
-  background-image: linear-gradient(to bottom right, #4880ec, #019cad);
+  background-image: linear-gradient(to right, #0083b0, #00b4db);
   height: 100vh;
   overflow: hidden;
   position: relative;
@@ -16,4 +16,34 @@
 .form-title {
   text-align: center;
   color: white;
+}
+
+.row .column .signUpForm {
+  border: none;
+  border-radius: 25px;
+  padding: 25px;
+}
+
+.row .column .signUpForm .buttonSignUp {
+  background-image: linear-gradient(to right, #0083b0, #00b4db);
+}
+
+.topLeftAstro {
+  position: absolute;
+}
+
+.topRightAstro {
+  position: absolute;
+  left: 65%;
+}
+
+.bottomLeftAstro {
+  position: absolute;
+  top: 42%;
+}
+
+.bottomRightAstro {
+  position: absolute;
+  left: 57%;
+  top: 45%;
 }

@@ -43,11 +43,27 @@ class Signup extends Component {
     return (
       <div>
         <div className="background-container">
+          <img
+            src={require('../../data/img/astro1.svg')}
+            className="topLeftAstro"
+          />
+          <img
+            src={require('../../data/img/astro2.svg')}
+            className="topRightAstro"
+          />
+          <img
+            src={require('../../data/img/astro3.svg')}
+            className="bottomLeftAstro"
+          />
+          <img
+            src={require('../../data/img/astro4.svg')}
+            className="bottomRightAstro"
+          />
           <div className="ui centered stackable grid vertical-center">
             <div className="ui row">
               <div className="six wide column">
                 <h1 className="form-title">Create Your Account</h1>
-                <div className="ui segment ">
+                <div className="ui segment signUpForm">
                   <form
                     className={`ui form ${this.state.error ? 'error' : ''}`}
                     onSubmit={this.handleSubmit}
@@ -55,7 +71,10 @@ class Signup extends Component {
                     <strong>
                       <label htmlFor="student">I am a:</label>
                     </strong>
-                    <div className="inline fields">
+                    <div
+                      className="inline fields"
+                      style={{ paddingTop: '5px' }}
+                    >
                       <div className="field">
                         <div className="ui radio checkbox">
                           <input
@@ -155,21 +174,24 @@ class Signup extends Component {
                         <p>{this.state.error}</p>
                       </div>
                     ) : null}
-                    <button type="submit" className="ui fluid submit button">
+                    <button
+                      type="submit"
+                      className="ui fluid primary submit button buttonSignUp"
+                    >
                       Sign Up
                     </button>
                   </form>
                   <div className="ui horizontal divider">Or</div>
                   <button
-                    className="ui primary fluid submit button"
+                    className="ui primary basic fluid submit button"
                     onClick={this.googleSignIn}
                   >
                     Register with Google
                   </button>
                 </div>
-                <div className="ui message">
+                {/* <div className="ui message">
                   Already have an account? <Link to="/login">Login</Link>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>

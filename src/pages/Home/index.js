@@ -46,6 +46,10 @@ class Home extends Component {
   renderTopPage = () => {
     return (
       <div className="top-container">
+        <img
+          src={require('../../data/img/Wave.png')}
+          style={{ position: 'absolute', bottom: '0px', width: '100%' }}
+        />
         <div className="ui centered stackable grid">
           <div className="ui row home-top">
             <div className="ui five wide column">
@@ -71,9 +75,7 @@ class Home extends Component {
                   onSubmit={this.handleSubmit}
                 >
                   <strong>
-                    <label htmlFor="student" style={{ paddingBottom: '50px' }}>
-                      I am a:
-                    </label>
+                    <label htmlFor="student">I am a:</label>
                   </strong>
                   <div className="inline fields" style={{ paddingTop: '5px' }}>
                     <div className="field">
@@ -261,38 +263,64 @@ class Home extends Component {
           Connect with anyone, <br /> anywhere, about anything.
         </h1>
         {/* <img src={require('../../data/img/Map.svg')} /> */}
-        <div className="ui centered five column grid mapBackground">
-          <div className="column">
+        <div className="ui centered eight column grid mapBackground">
+          <div className="four wide column">
             <div className="ui segment centerText vertical-center statisticItem">
-              <div className="ui statistic" style={{ padding: '20px' }}>
-                <div className="value blueText ">500+</div>
+              <div
+                className="ui small statistic"
+                style={{ paddingTop: '30px', paddingBottom: '30px' }}
+              >
+                <div
+                  className="value blueText "
+                  style={{ paddingBottom: '20px' }}
+                >
+                  5000+
+                </div>
                 <div className="label">Universities</div>
               </div>
             </div>
           </div>
-          <div className="column">
+          <div className="four wide column">
             <div className="ui segment centerText vertical-center statisticItem">
               <div
-                className="ui statistic"
-                style={{ paddingTop: '20px', paddingBottom: '20px' }}
+                className="ui small statistic"
+                style={{ paddingTop: '30px', paddingBottom: '30px' }}
               >
-                <div className="value blueText ">40+</div>
+                <div
+                  className="value blueText "
+                  style={{ paddingBottom: '20px' }}
+                >
+                  40+
+                </div>
                 <div className="label">Countries</div>
               </div>
             </div>
           </div>
-          <div className="column">
+          <div className="four wide column">
             <div className="ui segment centerText vertical-center statisticItem">
               <div
                 className="ui small statistic"
-                style={{ paddingTop: '20px', paddingBottom: '20px' }}
+                style={{ paddingTop: '30px', paddingBottom: '30px' }}
               >
-                <div className="value blueText ">10,000+</div>
-                <div className="label">University Students</div>
+                <div
+                  className="value blueText "
+                  style={{ paddingBottom: '20px' }}
+                >
+                  150+
+                </div>
+                <div className="label">Field of Studies</div>
               </div>
             </div>
           </div>
         </div>
+      </div>
+    );
+  };
+
+  renderCreatedWithLove = () => {
+    return (
+      <div className="ui container createdWithLove">
+        <img src={require('../../data/img/createdWithLove.svg')} />
       </div>
     );
   };
@@ -304,6 +332,7 @@ class Home extends Component {
         {this.renderAbout()}
         {/* {this.renderHowItWorks()} */}
         {this.renderStatistics()}
+        {this.renderCreatedWithLove()}
       </div>
     );
   }

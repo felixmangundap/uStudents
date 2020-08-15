@@ -2,10 +2,11 @@
   padding-top: 10vh;
   padding-bottom: 5vh;
   background-color: rgb(221, 242, 255);
-  /* background-image: url('https://i.ibb.co/Qc15jm8/lou-brassard-vu-NTWzg4zdo-unsplash.jpg'); */
+  /* background-image: url('../../data/img/Wave.svg'); */
   background-image: linear-gradient(to right, #0083b0, #00b4db);
   background-repeat: no-repeat;
   background-size: cover;
+  position: relative;
 }
 
 .vertical-center {
@@ -44,13 +45,19 @@
   padding-bottom: 5vh;
 }
 
+.createdWithLove {
+  padding-top: 10vh;
+  padding-bottom: 5vh;
+}
+
 .mapBackground .column .statisticItem {
   border: none;
   border-radius: 25px;
   padding: 25px;
   box-shadow: 5px 5px 5px #ddd;
-  width: 100%;
-  height: 30%;
+  width: 200px;
+  height: 200px;
+  margin: auto;
 }
 
 .home-top .column .registerFormHome .form .buttonHome {
@@ -63,6 +70,10 @@
 
 .centerText {
   text-align: center;
+}
+
+.mapBackground .column .statisticItem .blueText {
+  color: #01b4db;
 }
 
 .blueText {
