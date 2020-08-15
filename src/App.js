@@ -10,7 +10,7 @@ import store from './store';
 import NavBar from './components/NavBar';
 import Home from './pages/Home';
 import PersonalInfo from './pages/PersonalInfo';
-import Chat from './pages/Chat';
+import Dashboard from './pages/Dashboard';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 import { auth, firestore } from './services/firebase';
@@ -42,7 +42,7 @@ const InfoSetupRoute = ({ component: Component, authenticated, infoSetup, ...res
     render={(props) => {
       if (authenticated === true) {
         return infoSetup ? (
-          <Redirect to="/chat" />
+          <Redirect to="/dashboard" />
           ) : (
             <Component {...props} />
           )
@@ -62,7 +62,7 @@ const PublicRoute = ({ component: Component, authenticated, infoSetup, ...rest }
     render={(props) => {
       if (authenticated === true) {
         return infoSetup ? (
-          <Redirect to="/chat" />
+          <Redirect to="/dashboard" />
           ) : (
             <Redirect to="/add-personal-information" />
           )
@@ -118,10 +118,10 @@ class App extends Component {
             <Switch>
               <Route exact path="/" component={Home}></Route>
               <PrivateRoute
-                path="/chat"
+                path="/dashboard"
                 authenticated={this.state.authenticated}
                 infoSetup={this.state.infoSetup}
-                component={Chat}
+                component={Dashboard}
               ></PrivateRoute>
               <InfoSetupRoute
                 path="/add-personal-information"

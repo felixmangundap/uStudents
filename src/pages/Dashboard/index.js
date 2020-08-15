@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { signout } from "../../services/auth";
 
-class Chat extends Component {
+class Dashboard extends Component {
   state = {
   }
 
@@ -25,4 +25,4 @@ class Chat extends Component {
   }
 }
 
-export default Chat;
+export default Dashboard;
