@@ -142,7 +142,7 @@ class Personal extends Component {
     // })
 
     // console.log(chatIds)
-    const temp = this.state.chatList
+    const temp = this.state.chatList;
     console.log(temp)
     console.log(temp[0])
     
@@ -177,25 +177,27 @@ class Personal extends Component {
   };
 
   getPersonal = async () => {
-    const snapshot = await firestore.collection('personal').get()
-    const collection = {};
-    snapshot.forEach(doc => {
-        collection[doc.id] = doc.data();
-    });
+    const personalChat = [];
 
-    const personalChat = []
-    
-    await firestore
-    .collection('users')
-    .doc(this.state.userId)
-    .onSnapshot(
-      (snapshot) => {
-        if (snapshot.data().personal) {
-          snapshot.data().personal.forEach(id => personalChat.push(collection[id]))
-        }
-      }
-    )
+    console.log(auth().currentUser.uid);
+    await firestore.collection('personal')
+    .where('userA', '==', auth().currentUser.uid)
+    .get()
+    .then(querySnapshot => {
+      querySnapshot.forEach(function(doc) {
+        personalChat.push(doc.data());
+      });
+    })
 
+    await firestore.collection('personal')
+    .where('userB', '==', auth().currentUser.uid)
+    .get()
+    .then(querySnapshot => {
+      querySnapshot.forEach(function(doc) {
+        personalChat.push(doc.data());
+      });
+    })
+      
     this.setState({
       chatList: personalChat
     }, () => console.log(this.state.chatList))
