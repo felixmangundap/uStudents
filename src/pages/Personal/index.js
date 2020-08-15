@@ -3,12 +3,15 @@ import axios from 'axios';
 import _ from 'lodash';
 import { Dropdown } from 'semantic-ui-react';
 import moment from 'moment';
+import { v4 as uuidv4 } from 'uuid';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faPaperPlane,
   faPaperclip,
   faSearch,
 } from '@fortawesome/free-solid-svg-icons';
+
+import majorOptions from '../../data/majors.json'
 
 import './styles.css';
 
@@ -47,11 +50,10 @@ class Personal extends Component {
     chatList: [],
     users: {},
     userId: auth().currentUser.uid,
-    name: '',
-    fieldOfStudy: '',
+    uniOptions: [],
+    major: '',
     country: '',
     university: '',
-    searchterm: '',
   };
 
   componentDidMount() {
@@ -61,6 +63,25 @@ class Personal extends Component {
   }
 
   componentDidUpdate() {}
+
+  updateUniversity = async () => {
+    let uniList = [];
+    this.setState({ uniOptions: [] });
+    const path = `assets/university/${this.state.country}.json`;
+    await axios.get(path).then(response => {
+      uniList = [...uniList, ...response.data];
+    });
+
+    const uniqueUni =  _.orderBy(_.uniqBy(uniList, 'name'), ['name'], ['asc']);
+    this.setState({
+      uniOptions: uniqueUni.map((uni) => ({
+        ...uni,
+        text: uni.name,
+        key: uni.name,
+        value: uni.name,
+      })),
+    });
+  };
 
   sendChat = async (e) => {
     const { chatMessage: message, userId } = this.state;
@@ -157,7 +178,9 @@ class Personal extends Component {
     .doc(this.state.userId)
     .onSnapshot(
       (snapshot) => {
+        if (snapshot.data().personal) {
           snapshot.data().personal.forEach(id => personalChat.push(collection[id]))
+        }
       }
     )
 
@@ -168,8 +191,107 @@ class Personal extends Component {
     this.getChats()
   };
 
-  searchRooms = async () => {
-    //TODO
+  connectStudent = async () => {
+    const {
+      major,
+      country,
+      university,
+    } = this.state;
+
+    firestore
+    .collection('users')
+    .where('type', '==', 'mentor')
+    .where('mentorInterest', '==', major)
+    .where('mentorCountry', '==', country)
+    .where('mentorUniversity', '==', university)
+    .get()
+    .then(querySnapshot => {
+      const mentorList = []
+      querySnapshot.forEach(function(doc) {
+          mentorList.push(doc.data());
+      });
+
+      if (mentorList.length > 0) {
+        console.log('here');
+        const orderedUser = mentorList.sort(function(a, b) {
+          if (a.personal && b.personal) return a.personal.length - b.personal.length;
+          return 1;
+        });
+        const chosenMentor = orderedUser[0];
+
+        const timestamp = moment().valueOf();
+        const chatId = uuidv4();
+        const personalId = uuidv4();
+        
+        const chatUsers = [auth().currentUser.uid, chosenMentor.uid];
+
+        const personalItem = {
+          chatId,
+          timestamp,
+          userA: auth().currentUser.uid,
+          userB: chosenMentor.uid,
+        }
+
+        firestore
+        .collection('chats')
+        .doc(chatId)
+        .collection(chatId)
+        .doc(timestamp.toString())
+        .set({})
+        .then(() => {
+          firestore.collection("personal")
+          .doc(personalId)
+          .set(personalItem)
+          .then(() => {
+            firestore.collection("users")
+            .doc(chatUsers[0])
+            .get()
+            .then(doc => {
+              if (doc.data().personal) {
+                const userPersonal =  doc.data().personal;
+                const newUserPersonal = [...userPersonal, personalId];
+                firestore.collection("users")
+                .doc(chatUsers[0])
+                .update({
+                  personal: newUserPersonal,
+                })
+              } else {
+                const userPersonal = [personalId];
+                firestore.collection("users")
+                .doc(chatUsers[0])
+                .update({
+                  personal: userPersonal,
+                })
+              }
+            });
+            firestore.collection("users")
+            .doc(chatUsers[1])
+            .get()
+            .then(doc => {
+              if (doc.data().personal) {
+                const userPersonal =  doc.data().personal;
+                const newUserPersonal = [...userPersonal, personalId];
+                firestore.collection("users")
+                .doc(chatUsers[1])
+                .update({
+                  personal: newUserPersonal,
+                })
+              } else {
+                const userPersonal = [personalId];
+                firestore.collection("users")
+                .doc(chatUsers[1])
+                .update({
+                  personal: userPersonal,
+                })
+              }
+            });
+          })
+        })
+        .catch((err) => {
+          console.log(err.toString());
+        });
+      }
+    })
   };
 
   createRooms = async () => {
@@ -286,10 +408,9 @@ class Personal extends Component {
               fluid
               search
               selection
-              //TODO change options
-              options={countryOptions}
+              options={majorOptions}
               onChange={(e, { value }) => {
-                this.setState({ country: value });
+                this.setState({ major: value });
               }}
               required
             />
@@ -303,7 +424,7 @@ class Personal extends Component {
               selection
               options={countryOptions}
               onChange={(e, { value }) => {
-                this.setState({ country: value });
+                this.setState({ country: value }, () => { this.updateUniversity() })
               }}
               required
             />
@@ -315,16 +436,15 @@ class Personal extends Component {
               fluid
               search
               selection
-              //TODO change options
-              options={countryOptions}
+              options={this.state.uniOptions}
               onChange={(e, { value }) => {
-                this.setState({ country: value });
+                this.setState({ university: value });
               }}
               required
             />
           </div>
           <button
-            onClick={this.searchRooms}
+            onClick={this.connectStudent}
             className="ui fluid primary button"
           >
             Connect
