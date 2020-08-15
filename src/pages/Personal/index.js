@@ -44,6 +44,8 @@ class Personal extends Component {
   state = {
     chatMessage: '',
     chatHistory: [],
+    chatList: [],
+    users: {},
     userId: auth().currentUser.uid,
     name: '',
     fieldOfStudy: '',
@@ -53,7 +55,9 @@ class Personal extends Component {
   };
 
   componentDidMount() {
+    this.getAllUsers();
     this.getChat();
+    this.getPersonal();
   }
 
   componentDidUpdate() {}
@@ -84,12 +88,39 @@ class Personal extends Component {
         });
       })
       .catch((err) => {
-        console.log(err.toString());
+        console.log("TEST = " +err.toString());
       });
   };
 
+  getAllUsers = async () => {
+    const snapshot = await firestore.collection('users').get()
+    const collection = {};
+    snapshot.forEach(doc => {
+        collection[doc.id] = doc.data();
+    });
+    this.setState({
+      users: collection
+    });
+  }
+
+  getChats = () => {
+    // const chatIds = []
+    // console.log(this.state.chatList)
+    // this.state.chatList.forEach(element => {
+    //   console.log(element)
+    //   chatIds.push(element.chatId)
+    // })
+
+    // console.log(chatIds)
+    const temp = this.state.chatList
+    console.log(temp)
+    console.log(temp[0])
+    
+  }
+
   getChat = () => {
     const { chatHistory } = this.state;
+      
     firestore
       .collection('chats')
       .doc('7Ps1m0Cc0eO4km8JrG2Q')
@@ -112,8 +143,29 @@ class Personal extends Component {
       );
   };
 
-  getRooms = async () => {
-    const result = await firestore.collection('users').get();
+  getPersonal = async () => {
+    const snapshot = await firestore.collection('personal').get()
+    const collection = {};
+    snapshot.forEach(doc => {
+        collection[doc.id] = doc.data();
+    });
+
+    const personalChat = []
+    
+    await firestore
+    .collection('users')
+    .doc(this.state.userId)
+    .onSnapshot(
+      (snapshot) => {
+          snapshot.data().personal.forEach(id => personalChat.push(collection[id]))
+      }
+    )
+
+    this.setState({
+      chatList: personalChat
+    }, () => console.log(this.state.chatList))
+
+    this.getChats()
   };
 
   searchRooms = async () => {
@@ -164,7 +216,8 @@ class Personal extends Component {
     );
   };
 
-  renderRooms = () => {
+  renderPersonal = () => {
+
     return (
       <div className={'chatList'}>
         <div className="ui segment chatListItem">
@@ -436,7 +489,7 @@ class Personal extends Component {
                         />
                       </a>
                     </div>
-                    {this.renderRooms()}
+                    {this.renderPersonal()}
                   </div>
                   <div className={'chatContainer'}>
                     <div className={'chatTitle'}>

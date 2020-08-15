@@ -14,10 +14,10 @@ const guestLinks = (
 
 const authLinks = (
   <div className="right menu ">
-    <Link to="/" className="item">
+    <Link to="/personal" className="item">
       Personal
     </Link>
-    <Link to="/" className="item">
+    <Link to="/rooms" className="item">
       Rooms
     </Link>
   </div>
