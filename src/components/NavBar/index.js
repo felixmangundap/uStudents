@@ -17,7 +17,7 @@ const authLinks = (
     <Link to="/" className="item">
       Personal
     </Link>
-    <Link to="/" className="item">
+    <Link to="/rooms" className="item">
       Rooms
     </Link>
   </div>
