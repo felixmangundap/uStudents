@@ -46,7 +46,7 @@ const countryOptions = [
 class Personal extends Component {
   state = {
     chatMessage: '',
-    chatHistory: {},
+    chatHistory: [],
     chatList: [],
     users: {},
     userId: auth().currentUser.uid,
@@ -188,7 +188,7 @@ class Personal extends Component {
 
   getChat = () => {
     const { chatHistory, currChatId } = this.state;
-      
+
     if (currChatId) {
       console.log('YES')
       firestore
@@ -238,7 +238,7 @@ class Personal extends Component {
       
     this.setState({
       chatList: personalChat
-    }, () => this.getChats())
+    }, () => console.log(this.state.chatList))
   };
 
   connectStudent = async () => {
@@ -362,6 +362,7 @@ class Personal extends Component {
 
   renderChat = () => {
     const { chatHistory, userId } = this.state;
+    console.log(chatHistory)
     let lastSenderId = '';
 
     return (
@@ -394,7 +395,9 @@ class Personal extends Component {
     return (
       <div className={'chatList'}>
       {this.state.chatList.length > 0 && this.state.chatList.map((chat) => (
-        <div className="ui segment chatListItem">
+        <div className={this.state.currChatId == chat.chatid ? "ui segment chatListItem" : "ui segment chatListItem readChat"} onClick={() => {console.log(chat) 
+        this.setState({ currChatId: chat.chatId, currPersonalId: chat.id, chatHistory: [] }, () => this.getChat())
+        }}>
           <div className="ui comments">
             <div className="ui comment">
               <a className="avatar">
@@ -691,7 +694,7 @@ class Personal extends Component {
                     <div className={'chatTitle'}>
                       <strong>{this.state.chatName}</strong>
                     </div>
-                    {/* {this.renderChat()} */}
+                    {this.renderChat()}
                     <div className={'chatInputContainer'}>
                       <a onClick={() => {}}>
                         <FontAwesomeIcon
