@@ -295,11 +295,11 @@ class Personal extends Component {
             </button>
           </div>
           <div className="ui twelve wide stretched column">
-            <div className="vertical-center">
-              <div className="ui tiny rounded left floated image">
+            <div>
+              <div className="ui tiny rounded left floated image vertical-center">
                 <img src="https://avatar.oxro.io/avatar.svg?name=Leia+Louie&background=000000&color=e5c296" />
               </div>
-              <div>
+              <div className="vertical-center">
                 <strong>Mentor Name</strong>
                 <div>Major</div>
                 <div style={{ color: 'grey' }}>University, Country</div>
