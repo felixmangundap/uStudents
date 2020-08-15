@@ -99,23 +99,13 @@ class Personal extends Component {
         collection[doc.id] = doc.data();
     });
     this.setState({
+      ...this.state,
       users: collection
     });
   }
 
-  getChats = () => {
-    // const chatIds = []
-    // console.log(this.state.chatList)
-    // this.state.chatList.forEach(element => {
-    //   console.log(element)
-    //   chatIds.push(element.chatId)
-    // })
-
-    // console.log(chatIds)
-    const temp = this.state.chatList
-    console.log(temp)
-    console.log(temp[0])
-    
+  getChats = (chats) => {
+    console.log(this.state.chatList[0])
   }
 
   getChat = () => {
@@ -129,11 +119,11 @@ class Personal extends Component {
         (snapshot) => {
           snapshot.docChanges().forEach((change) => {
             if (change.type === 'added') {
-              console.log(change.doc.data());
               chatHistory.push(change.doc.data());
             }
           });
           this.setState({
+            ...this.state,
             isLoading: false,
           });
         },
@@ -162,10 +152,12 @@ class Personal extends Component {
     )
 
     this.setState({
+      ...this.state,
       chatList: personalChat
-    }, () => console.log(this.state.chatList))
+    }, () => {
+      this.getChats(this.state.chatList)
+    })
 
-    this.getChats()
   };
 
   searchRooms = async () => {
