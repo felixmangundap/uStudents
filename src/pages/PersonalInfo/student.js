@@ -95,12 +95,9 @@ class StudentInfo extends Component {
       studentStart,
       studentUniversity,
       infoSetup: true,
-    }
+    };
 
-    await firestore
-      .collection("users")
-      .doc(uid)
-      .update(userObject)
+    await firestore.collection('users').doc(uid).update(userObject);
   };
 
   updateUniversity = async () => {
@@ -108,12 +105,12 @@ class StudentInfo extends Component {
     this.setState({ uniOptions: [] });
     for (const country of this.state.studentCountry) {
       const path = `assets/university/${country}.json`;
-      await axios.get(path).then(response => {
+      await axios.get(path).then((response) => {
         uniList = [...uniList, ...response.data];
       });
     }
 
-    const uniqueUni =  _.orderBy(_.uniqBy(uniList, 'name'), ['name'], ['asc']);
+    const uniqueUni = _.orderBy(_.uniqBy(uniList, 'name'), ['name'], ['asc']);
     this.setState({
       uniOptions: uniqueUni.map((uni) => ({
         ...uni,
@@ -189,7 +186,13 @@ class StudentInfo extends Component {
             <p>{this.state.error}</p>
           </div>
         ) : null}
-        <button type="submit" className="ui fluid submit button">
+        <button
+          type="submit"
+          className="ui fluid primary submit button buttonForm"
+          style={{
+            backgroundImage: 'linear-gradient(to right, #0083b0, #00b4db)',
+          }}
+        >
           Continue
         </button>
       </form>
@@ -205,7 +208,10 @@ class StudentInfo extends Component {
             onChange={this.handleChange}
           />
         </div>
-        <button type="submit" className="circular ui right floated icon button">
+        <button
+          type="submit"
+          className="circular ui right floated inverted icon button"
+        >
           <i className="icon arrow right"></i>
         </button>
       </form>
@@ -222,20 +228,20 @@ class StudentInfo extends Component {
               options={majorOptions}
               value={this.state.studentInterest}
               onChange={(e, { value }) => {
-                this.setState({ studentInterest: value })
+                this.setState({ studentInterest: value });
               }}
               required
             />
           </div>
           <button
             onClick={this.prevPage}
-            className="circular ui left floated icon button"
+            className="circular ui left floated inverted icon button"
           >
             <i className="icon arrow left"></i>
           </button>
           <button
             type="submit"
-            className="circular ui right floated icon button"
+            className="circular ui right floated inverted icon button"
           >
             <i className="icon arrow right"></i>
           </button>
@@ -256,7 +262,9 @@ class StudentInfo extends Component {
               options={countryOptions}
               value={this.state.studentCountry}
               onChange={(e, { value }) => {
-                this.setState({ studentCountry: value }, () => { this.updateUniversity() })
+                this.setState({ studentCountry: value }, () => {
+                  this.updateUniversity();
+                });
               }}
               disabled={this.state.studentCountry.length >= 3}
               required
@@ -264,13 +272,13 @@ class StudentInfo extends Component {
           </div>
           <button
             onClick={this.prevPage}
-            className="circular ui left floated icon button"
+            className="circular ui left floated inverted icon button"
           >
             <i className="icon arrow left"></i>
           </button>
           <button
             type="submit"
-            className="circular ui right floated icon button"
+            className="circular ui right floated inverted icon button"
           >
             <i className="icon arrow right"></i>
           </button>
@@ -300,11 +308,15 @@ class StudentInfo extends Component {
           </div>
           <button
             onClick={this.prevPage}
-            className="circular ui left floated icon button"
+            className="circular ui left floated inverted icon button"
           >
             <i className="icon arrow left"></i>
           </button>
-          <button type="submit" className=" ui right floated  button">
+          <button
+            type="submit"
+            className=" ui right floated inverted button"
+            style={{ color: '#01b4db' }}
+          >
             Get Started
           </button>
         </form>
@@ -313,8 +325,12 @@ class StudentInfo extends Component {
 
     return (
       <div>
-        <div className="background-container">
-          <div className="ui centered stackable grid vertical-center">
+        <div className="background-container" style={{ position: 'relative' }}>
+          <img
+            src={require('../../data/img/welcome.svg')}
+            className="welcomeImage"
+          />
+          <div className="ui centered stackable grid formContainer">
             <div className="ui row">
               <div className="six wide column">
                 <h1 className="form-title">

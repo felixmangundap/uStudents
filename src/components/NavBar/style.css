@@ -1,0 +1,12 @@
+#menubar {
+  background: transparent;
+  position: absolute;
+}
+
+.no-border {
+  border: none !important;
+}
+
+.no-border::before {
+  display: none !important;
+}
