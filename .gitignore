@@ -9,6 +9,12 @@ lerna-debug.log*
 # Env
 .env
 
+# Build
+build
+
+# Firebase
+.firebase
+
 # Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 
