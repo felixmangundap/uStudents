@@ -66,7 +66,7 @@ class Personal extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     if (prevState.currChatId !== this.state.currChatId) {
-      this.getChat();
+      this.setState({ chatHistory: [] }, () => this.getChat());
     }
 
     if (prevState.currPersonalId !== this.state.currPersonalId) {
