@@ -426,25 +426,6 @@ class Personal extends Component {
           </div>
         </div>
       ))}
-        <div className="ui segment chatListItem readChat">
-          <div className="ui comments">
-            <div className="ui comment">
-              <a className="avatar">
-                <img src="https://avatar.oxro.io/avatar.svg?name=John+Doe&background=000000&color=e5c296" />
-              </a>
-              <div className="content">
-                <a className="author">John Doe</a>
-                <div className="metadata">
-                  <div className="date">5 mins ago</div>
-                </div>
-                <div className="text">
-                  Hey guys, I hope this example comment is helping you read this
-                  documentation.
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     );
   };

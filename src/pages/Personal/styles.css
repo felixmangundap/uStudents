@@ -57,6 +57,7 @@ a {
 
 .searchBar {
   width: 100%;
+  height: 50px;
   background: #ccc;
   padding: 15px;
   border-radius: 5px;
@@ -140,6 +141,7 @@ a {
 
 .chatTitle {
   width: 100%;
+  height: 50px;
   background: #ddd;
   padding: 15px;
   border-radius: 5px;
