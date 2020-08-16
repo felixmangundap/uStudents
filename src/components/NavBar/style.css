@@ -1,6 +1,7 @@
 #menubar {
   background: transparent;
   position: absolute;
+  top:15px;
 }
 
 .no-border {
@@ -9,4 +10,26 @@
 
 .no-border::before {
   display: none !important;
+}
+
+.ui.container {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center !important;
+  -webkit-box-align: center !important;
+}
+
+.right.menu {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center !important;
+  -webkit-box-align: center !important;
+}
+
+.item.text {
+  font-size: 1.25em;
+}
+
+.logoImage {
+  height: 50px;
 }

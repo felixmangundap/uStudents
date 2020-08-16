@@ -53,7 +53,7 @@ const InfoSetupRoute = ({
     render={(props) => {
       if (authenticated === true) {
         return infoSetup ? (
-          <Redirect to="/dashboard" />
+          <Redirect to="/personal" />
         ) : (
           <Component {...props} />
         );
@@ -78,7 +78,7 @@ const PublicRoute = ({
     render={(props) => {
       if (authenticated === true) {
         return infoSetup ? (
-          <Redirect to="/dashboard" />
+          <Redirect to="/personal" />
         ) : (
           <Redirect to="/add-personal-information" />
         );
@@ -129,7 +129,13 @@ class App extends Component {
           <Fragment>
             <NavBar authenticated={this.state.authenticated} />
             <Switch>
-              <Route exact path="/" component={Home}></Route>
+              <PublicRoute
+                exact
+                path="/"
+                authenticated={this.state.authenticated}
+                infoSetup={this.state.infoSetup}
+                component={Home}
+              ></PublicRoute>
               <PrivateRoute
                 path="/dashboard"
                 authenticated={this.state.authenticated}

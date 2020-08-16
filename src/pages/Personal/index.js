@@ -64,7 +64,15 @@ class Personal extends Component {
     this.getPersonal();
   }
 
-  componentDidUpdate() {}
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.currChatId !== this.state.currChatId) {
+      this.getChat();
+    }
+
+    if (prevState.currPersonalId !== this.state.currPersonalId) {
+      this.updateChatName();
+    }
+  }
 
   updateUniversity = async () => {
     let uniList = [];
@@ -190,7 +198,6 @@ class Personal extends Component {
     const { chatHistory, currChatId } = this.state;
 
     if (currChatId) {
-      console.log('YES')
       firestore
         .collection('chats')
         .doc(currChatId)
@@ -223,7 +230,11 @@ class Personal extends Component {
     .get()
     .then(querySnapshot => {
       querySnapshot.forEach(function(doc) {
-        personalChat.push(doc.data());
+        const chatObj = {
+          ...doc.data(),
+          id: doc.id,
+        }
+        personalChat.push(chatObj);
       });
     })
 
@@ -232,7 +243,11 @@ class Personal extends Component {
     .get()
     .then(querySnapshot => {
       querySnapshot.forEach(function(doc) {
-        personalChat.push(doc.data());
+        const chatObj = {
+          ...doc.data(),
+          id: doc.id,
+        }
+        personalChat.push(chatObj);
       });
     })
       
@@ -286,14 +301,16 @@ class Personal extends Component {
         .doc(chatId)
         .collection(chatId)
         .doc(timestamp.toString())
-        .set({})
+        .set({
+          message: 'Welcome! Ask your questions away :)'
+        })
         .then(() => {
           firestore.collection("personal")
           .doc(personalId)
           .set(personalItem)
           .then(() => {
             this.setState({ currPersonalId: personalId }, () => this.updateChatName());
-            this.setState({ currChatId: chatId });
+            this.setState({ currChatId: chatId }, () => this.getPersonal());
             firestore.collection("users")
             .doc(chatUsers[0])
             .get()
@@ -391,12 +408,11 @@ class Personal extends Component {
   };
 
   renderPersonal = () => {
-
     return (
       <div className={'chatList'}>
       {this.state.chatList.length > 0 && this.state.chatList.map((chat) => (
         <div className={this.state.currChatId == chat.chatid ? "ui segment chatListItem" : "ui segment chatListItem readChat"} onClick={() => {console.log(chat) 
-        this.setState({ currChatId: chat.chatId, currPersonalId: chat.id, chatHistory: [] }, () => this.getChat())
+          this.setState({ currChatId: chat.chatId, currPersonalId: chat.id, chatHistory: [] }, () => this.updateChatName())
         }}>
           <div className="ui comments">
             <div className="ui comment">
@@ -404,11 +420,7 @@ class Personal extends Component {
                 <img src="https://avatar.oxro.io/avatar.svg?name=John+Doe&background=000000&color=e5c296" />
               </a>
               <div className="content">
-                <a className="author">{this.state.userId == chat.userA ? this.state.users[chat.userB].firstname : this.state.users[chat.userA].firstname} </a>
-                <div className="right floated metadata">
-                  <div className="date">5 mins ago</div>
-                </div>
-                {this.state.chatHistory[chat.chatId] && 
+                <a className="author vertical-center">{this.state.userId == chat.userA ? this.state.users[chat.userB].firstname : this.state.users[chat.userA].firstname} </a>
                 <div
                   className="text"
                   style={{
@@ -417,10 +429,8 @@ class Personal extends Component {
                     whiteSpace: 'nowrap',
                   }}
                   >
-                    test
-                  {/* {this.state.chatHistory[chat.chatId][0]} */}
+                  {this.state.userId == chat.userA ? this.state.users[chat.userB].mentorUniversity : this.state.users[chat.userA].mentorUniversity}
                 </div>
-                }
               </div>
             </div>
           </div>
@@ -640,7 +650,7 @@ class Personal extends Component {
     return (
       <div className="background-container">
         <div id="rooms" className={'ui container'}>
-          <div className="ui grid">
+          <div className="ui grid widthFull">
             <div className="ui row">
               <div className="ui six wide stretched column">
                 {/* Student Personal */}
