@@ -41,15 +41,9 @@ class MentorInfo extends Component {
       'Personal Information',
       'Where Are You Currently Studying?',
       'Which University Are You Currently Attending',
-      'What\'s Your Major?',
+      "What's Your Major?",
     ],
-    subtitle: [
-      '',
-      '',
-      '',
-      '',
-      '',
-    ],
+    subtitle: ['', '', '', '', ''],
     page: 0,
     uniList: [],
     uniOptions: [],
@@ -91,23 +85,20 @@ class MentorInfo extends Component {
       mentorCountry,
       mentorInterest,
       mentorUniversity,
-    }
+    };
 
-    await firestore
-      .collection("users")
-      .doc(uid)
-      .update(userObject)
+    await firestore.collection('users').doc(uid).update(userObject);
   };
 
   updateUniversity = async () => {
     let uniList = [];
     this.setState({ uniOptions: [] });
     const path = `assets/university/${this.state.mentorCountry}.json`;
-    await axios.get(path).then(response => {
+    await axios.get(path).then((response) => {
       uniList = [...uniList, ...response.data];
     });
 
-    const uniqueUni =  _.orderBy(_.uniqBy(uniList, 'name'), ['name'], ['asc']);
+    const uniqueUni = _.orderBy(_.uniqBy(uniList, 'name'), ['name'], ['asc']);
     this.setState({
       uniOptions: uniqueUni.map((uni) => ({
         ...uni,
@@ -183,7 +174,13 @@ class MentorInfo extends Component {
             <p>{this.state.error}</p>
           </div>
         ) : null}
-        <button type="submit" className="ui fluid submit button">
+        <button
+          type="submit"
+          className="ui fluid primary submit button buttonForm"
+          style={{
+            backgroundImage: 'linear-gradient(to right, #0083b0, #00b4db)',
+          }}
+        >
           Continue
         </button>
       </form>
@@ -201,20 +198,22 @@ class MentorInfo extends Component {
               options={countryOptions}
               value={this.state.mentorCountry}
               onChange={(e, { value }) => {
-                this.setState({ mentorCountry: value }, () => { this.updateUniversity() })
+                this.setState({ mentorCountry: value }, () => {
+                  this.updateUniversity();
+                });
               }}
               required
             />
           </div>
           <button
             onClick={this.prevPage}
-            className="circular ui left floated icon button"
+            className="circular ui left floated inverted icon button"
           >
             <i className="icon arrow left"></i>
           </button>
           <button
             type="submit"
-            className="circular ui right floated icon button"
+            className="circular ui right floated inverted icon button"
           >
             <i className="icon arrow right"></i>
           </button>
@@ -241,13 +240,13 @@ class MentorInfo extends Component {
           </div>
           <button
             onClick={this.prevPage}
-            className="circular ui left floated icon button"
+            className="circular ui left floated inverted icon button"
           >
             <i className="icon arrow left"></i>
           </button>
           <button
             type="submit"
-            className="circular ui right floated icon button"
+            className="circular ui right floated inverted icon button"
           >
             <i className="icon arrow right"></i>
           </button>
@@ -267,18 +266,18 @@ class MentorInfo extends Component {
               options={majorOptions}
               value={this.state.mentorInterest}
               onChange={(e, { value }) => {
-                this.setState({ mentorInterest: value })
+                this.setState({ mentorInterest: value });
               }}
               required
             />
           </div>
           <button
             onClick={this.prevPage}
-            className="circular ui left floated icon button"
+            className="circular ui left floated inverted icon button"
           >
             <i className="icon arrow left"></i>
           </button>
-          <button type="submit" className=" ui right floated  button">
+          <button type="submit" className=" ui right inverted floated  button">
             Get Started
           </button>
         </form>
@@ -287,8 +286,12 @@ class MentorInfo extends Component {
 
     return (
       <div>
-        <div className="background-container">
-          <div className="ui centered stackable grid vertical-center">
+        <div className="background-container" style={{ position: 'relative' }}>
+          <img
+            src={require('../../data/img/welcome.svg')}
+            className="welcomeImage"
+          />
+          <div className="ui centered stackable grid formContainer">
             <div className="ui row">
               <div className="six wide column">
                 <h1 className="form-title">

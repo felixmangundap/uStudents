@@ -39,11 +39,27 @@ class Login extends Component {
     return (
       <div>
         <div className="background-container">
+          <img
+            src={require('../../data/img/astro1.svg')}
+            className="topLeftAstro"
+          />
+          <img
+            src={require('../../data/img/astro2.svg')}
+            className="topRightAstro"
+          />
+          <img
+            src={require('../../data/img/astro3.svg')}
+            className="bottomLeftAstro"
+          />
+          <img
+            src={require('../../data/img/astro4.svg')}
+            className="bottomRightAstro"
+          />
           <div className="ui centered stackable grid vertical-center">
             <div className="ui row">
               <div className="six wide column">
                 <h1 className="form-title">Login</h1>
-                <div className="ui segment ">
+                <div className="ui segment signUpForm ">
                   <form
                     autoComplete="off"
                     className={`ui form ${this.state.error ? 'error' : ''}`}
@@ -76,62 +92,28 @@ class Login extends Component {
                         <p>{this.state.error}</p>
                       </div>
                     ) : null}
-                    <button type="submit" className="ui fluid submit button">
+                    <button
+                      type="submit"
+                      className="ui fluid primary submit button buttonSignUp"
+                    >
                       Login
                     </button>
                   </form>
                   <div className="ui horizontal divider">Or</div>
                   <button
-                    className="ui primary fluid submit button"
+                    className="ui primary basic fluid submit button"
                     onClick={this.googleSignIn}
                   >
                     Log In with Google
                   </button>
                 </div>
-                <div className="ui message">
+                {/* <div className="ui message">
                   Don't have an account? <Link to="/signup">Sign Up</Link>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
         </div>
-        <form autoComplete="off" onSubmit={this.handleSubmit}>
-          <h1>
-            Login to
-            <Link to="/">Chatty</Link>
-          </h1>
-          <p>Fill in the form below to login to your account.</p>
-          <div>
-            <input
-              placeholder="Email"
-              name="email"
-              type="email"
-              onChange={this.handleChange}
-              value={this.state.email}
-            />
-          </div>
-          <div>
-            <input
-              placeholder="Password"
-              name="password"
-              onChange={this.handleChange}
-              value={this.state.password}
-              type="password"
-            />
-          </div>
-          <div>
-            {this.state.error ? <p>{this.state.error}</p> : null}
-            <button type="submit">Login</button>
-          </div>
-          <p>Or</p>
-          <button onClick={this.googleSignIn} type="button">
-            Sign up with Google
-          </button>
-          <hr />
-          <p>
-            Don't have an account? <Link to="/signup">Sign up</Link>
-          </p>
-        </form>
       </div>
     );
   }

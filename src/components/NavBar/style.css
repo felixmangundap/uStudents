@@ -1,5 +1,6 @@
 #menubar {
   background: transparent;
+  position: absolute;
 }
 
 .no-border {
