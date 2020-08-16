@@ -2,39 +2,50 @@ import React, { Fragment, Component } from 'react';
 import { Link } from 'react-router-dom';
 
 import './style.css'
+import { signout } from '../../services/auth';
 
 const guestLinks = (
   <div className="right menu ">
-    <Link to="/login" className="item">
+    <Link to="/login" className="item text no-border">
       Login
     </Link>
-    <Link to="/signup" className="item">
+    <Link to="/signup" className="item text no-border">
       Sign Up
     </Link>
   </div>
 );
 
-const authLinks = (
+const authLinks = (onSignout) => (
   <div className="right menu ">
-    <Link to="/personal" className="item no-border">
-      Personal
-    </Link>
-    <Link to="/rooms" className="item no-border">
-      Rooms
+    <Link onClick={onSignout} className="item text no-border">
+      Sign Out
     </Link>
   </div>
 );
 
 class NavBar extends Component {
+
+  onSignout = async (e) => {
+    e.preventDefault();
+    try {
+      await signout();
+    } catch (error) {
+      this.setState({ error: error.message });
+    }
+  }
+
   render() {
     return (
       <Fragment>
         <div id='menubar' className="ui inverted fixed big menu">
           <div className="ui container">
             <Link to="/" className="item no-border">
-              uStudents
+              <img
+                src={require('../../data/img/logo_white.png')}
+                className="logoImage"
+              />
             </Link>
-            {this.props.authenticated === true ? authLinks : guestLinks}
+            {this.props.authenticated === true ? authLinks(this.onSignout) : guestLinks}
           </div>
         </div>
       </Fragment>

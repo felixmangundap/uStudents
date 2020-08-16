@@ -330,7 +330,7 @@ class StudentInfo extends Component {
             src={require('../../data/img/welcome.svg')}
             className="welcomeImage"
           />
-          <div className="ui centered stackable grid formContainer">
+          <div className="ui centered stackable grid formContainer vertical-center">
             <div className="ui row">
               <div className="six wide column">
                 <h1 className="form-title">

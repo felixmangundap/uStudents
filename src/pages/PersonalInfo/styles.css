@@ -8,6 +8,7 @@
 
 .welcomeImage {
   position: absolute;
+  height: 300px;
   bottom: 0;
   left: 50%;
   transform: translate(-50%);

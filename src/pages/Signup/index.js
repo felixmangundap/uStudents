@@ -139,36 +139,6 @@ class Signup extends Component {
                         title="Password must be a combination of number and letters, and at least 8 or more characters"
                       />
                     </div>
-
-                    <div className="field">
-                      <div className="two fields">
-                        <div className="field">
-                          <label>First Name</label>
-                          <input
-                            type="text"
-                            name="firstname"
-                            placeholder="First Name"
-                          />
-                        </div>
-                        <div className="field">
-                          <label>Last Name</label>
-                          <input
-                            type="text"
-                            name="lastname"
-                            placeholder="Last Name"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                    <div className="field">
-                      <label>Country of Origin</label>
-                      <input
-                        type="text"
-                        name="studentCountry"
-                        placeholder="Select Country"
-                      />
-                    </div>
-
                     {this.state.error ? (
                       <div className="ui error message">
                         <p>{this.state.error}</p>
