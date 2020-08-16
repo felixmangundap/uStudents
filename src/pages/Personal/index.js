@@ -543,9 +543,9 @@ class Personal extends Component {
                 <img src="https://avatar.oxro.io/avatar.svg?name=Leia+Louie&background=000000&color=e5c296" />
               </div>
               <div className="vertical-center">
-                <strong>Mentor Name</strong>
-                <div>Major</div>
-                <div style={{ color: 'grey' }}>University, Country</div>
+                <strong>Lee Lo</strong>
+                <div>Computer Science</div>
+                <div style={{ color: 'grey' }}>University of Waterloo, Canada</div>
               </div>
             </div>
           </div>
