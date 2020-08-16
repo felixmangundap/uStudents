@@ -6,8 +6,7 @@ a {
 }
 
 #rooms {
-  padding: 75px 0 25px;
-  padding-top: 75px;
+  padding: 90px 0 25px;
   height: 100vh;
   display: flex;
   flex-flow: row;
